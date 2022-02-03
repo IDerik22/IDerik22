@@ -2,6 +2,17 @@
 #Erik Teppan
 #03.02.2022
 
+#Juubel
+späev = input("Sisesta oma sünnipäev dd.mm.yyyy: ")
+dd, mm, yyyy = späev.split(".")
+aasta = 2022
+vanus = aasta - int(yyyy)
+jaak = vanus %5
+if jaak == 0:
+    print("juubel")
+else:
+    print("Sul ei ole juubel")
+
 #Matemaatika
 arv1 = int(input("Sisesta esimene arv: "))
 arv2 = int(input("Sisesta teine arv: "))
