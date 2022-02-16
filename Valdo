@@ -1,1 +1,100 @@
+#############
+#Erik Teppan#
+#07.02.2022 #
+#IT-21      #
+#############
+cls
+
+$kataloog = "C:\POWERSHELL"
+
+
+$kasutajad = Import-Csv C:\POWERSHELL\ad-kasutajad.csv
+#$doomeen = "@TEPPAN.local"
+$parool = "Passw0rd"
+
+foreach($kasutaja in $kasutajad){
+
+$enimi = $kasutaja.Eesnimi
+$pnimi = $kasutaja.Perenimi
+$osakond = $kasutaja.Osakond
+$kasutajanimi = $enimi[0] + $pnimi
+$OU = "OU=$osakond,OU=Kasutaja,DC=TEPPAN,DC=LOCAL"
+$teekond = "OU=Kasutaja,DC=TEPPAN,DC=LOCAL"
+
+$knimi = $enimi.Tolower()+"."+$pnimi.Tolower()
+ 
+      if(Get-ADOrganizationalUnit -Filter "Distinguishedname -eq '$OU'"){
+           Write-Warning "$OU on juba oleams"
+
+      }
+        else
+      {
+
+        New-ADOrganizationalUnit -Name $osakond -Path $teekond
+        Write-Host "$OU on juba oelmas"
+
+      }
+    
+      if(Get-ADUser -F { SamAccountname -eq $knimi }){
+  $test = Write-Host "Kasutaja nimega $knimi on juba olemas"
+   
+      }
+        else
+      {
+        
+        New-ADUser `
+            -SamAccountName $knimi `
+            -Name "$enimi $pnimi" `
+            -GivenName $enimi `
+            -Surname $pnimi `
+            -Enable $true `
+            -Path $OU `
+            -Department $osakond `
+            -AccountPassword (ConvertTo-SecureString $parool -AsPlainText -Force) -ChangePasswordAtLogon $true
+
+
+
+            Write-Output "Luua uus kasutaja nimega $knimi"
+
+      }
+       
+        Write-Output "$enimi $pnimi kasutajanimeks on $knimi ja to on osakonnnas $osakond"
+       
+        $logfilepath= Import-Csv C:\POWERSHELL\ad-kasutajad.csv
+        $logmessage= "$enimi $pnimi kes on osakonnas $osakond, kasutajanimi on $knimi"
+     
+        if(Test-Path $logfilepath)
+
+      {
+        
+        Remove-Item $logfilepath
+
+      }
+       
+        $logmessage +" - "+ (Get-Date).ToString() >> $logfilepath
+
+ }
+cls
+$ADkasutajad = Get-ADUser -Filter * -Properties Distinguishedname, lastLogon | Select Distinguishedname, samaccountname, @{Name="lastLogon";Expression={[datetime]::FromFileTime($_.'lastLogon')}} 
+
+foreach($kasutajad in $ADkasutajad){
+    $knimi = $kasutajad.samaccountname
+    $login = $kasutajad.lastLogon
+    $path = $kasutajad.distinguishedname
+
+    $kuupaev = Get-Date
+    $vahe = (New-TimeSpan -Start $login -End $kuupaev).Days
+
+    if($vahe -gt 365){
+        Write-Host "Kautaja $adkasutaja logis viimati süsteemi rohkem kui aasta tagasi"
+        Disable-ADAccount -Identity $knimi
+        
+        Move-ADObject -Identity $path -TargetPath "OU=ENDISEDTOOTAJAD,DC=TEPPAN,DC=local"
+    }
+    else
+    {
+        write-warning("$knimi ei ole sisse loginud viimased $vahe päeva")          
+    }
+
+
 
