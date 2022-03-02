@@ -16,5 +16,5 @@ for tul in tulemused:#Tsükkel
 print("─────────────────────────────────────")            
 print('Kõrgeim tulemus on:', tul1)#Väljastab kõrgeima tulemuse
 test = (round(((tulemused[0] + tulemused[1] + tulemused[2])/3),2))#Arvutab aritmeetilise keskmise
-print('Tulemuste aritmeetiline keskmine:',(test))#Prindib aritmeetilise keskmise
+    print('Tulemuste aritmeetiline keskmine:',(test))#Väljastab aritmeetilise keskmise
 print("─────────────────────────────────────")
