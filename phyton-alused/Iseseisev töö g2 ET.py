@@ -13,7 +13,8 @@ for tul in tulemused:#Tsükkel
     else:
         if (tul > tul1): 
             tul1 = tul
-print('Kõrgeim tulemus:', tul1)#Väljastab kõrgeima tulemuse
+print("─────────────────────────────────────")            
+print('Kõrgeim tulemus on:', tul1)#Väljastab kõrgeima tulemuse
 test = (round(((tulemused[0] + tulemused[1] + tulemused[2])/3),2))#Arvutab aritmeetilise keskmise
-
-print('Aritmeetiline keskmine:',(test))#Prindib aritmeetilise keskmise
+print('Tulemuste aritmeetiline keskmine:',(test))#Prindib aritmeetilise keskmise
+print("─────────────────────────────────────")
