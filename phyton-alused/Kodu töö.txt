@@ -1,0 +1,7 @@
+10. Kaugushüppe
+
+kasutaja sisestab 3 kaugushüppe tulemust - 1p
+sinu programm leiab ning väljastab parima ja keskmise tulemuse - 2p
+programmi dialoog kasutajaga on arusaadav ja üheselt mõistetav - 1p
+kood kommenteeritud - 1p
+	
