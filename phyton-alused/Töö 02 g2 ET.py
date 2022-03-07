@@ -1,9 +1,7 @@
 #Erik Teppan
 # 02.03.2022
 #IT-21
-
 import random
-
 #2.1
 def aratus():
     korrad = int(input("Mitu korda on vaja äratada: "))
@@ -11,7 +9,6 @@ def aratus():
         print("Tõuse ja sära!")
         korrad += -1
 aratus()
-
 #2.2
 def mure():
     ringid = int(input("Mitu ringi läbiti: "))
@@ -22,7 +19,6 @@ def mure():
         ringid += -1
     print(f"porgandite koguarv on {porgandid}")
 mure()
-
 #2.3
 def taringud():
     kogus = int(input("Mitut täringut lähed vaja: "))
@@ -30,7 +26,6 @@ def taringud():
         vastus = random.randint(1,6)
         print(vastus)
 taringud()
-
 #2.4
 def male():
     taisarv = int(input("Mitmes ruut: "))
