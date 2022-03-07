@@ -1,13 +1,11 @@
 # Erik Teppan
 # 02.03.2022
 #IT-21
-
 # Tervitus
 def tere():
     print("Tere, maailm!")
 
 tere()
-
 # Aastaliblikas
 def liblikas():
     aasta = 2020
@@ -17,7 +15,6 @@ def liblikas():
     print(lause)
 
 liblikas()
-
 # Pilved
 def pilved():
     korgus = float(input("Sisesta pilvede kõrgus (näide 5.4): "))
@@ -27,7 +24,6 @@ def pilved():
         print("Need ei ole ülemised pilved")
         
 pilved()
-
 # Bussid
 def bussid():
     inimesed = int(input("Sisesta inimeste arv: "))
