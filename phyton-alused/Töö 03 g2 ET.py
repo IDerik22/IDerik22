@@ -1,7 +1,6 @@
 #Erik Teppa
 #02.03.2022
 #IT-21
-
 #3.1
 fail = open("rebased.txt", encoding="UTF-8")
 vastuvoetud = []
