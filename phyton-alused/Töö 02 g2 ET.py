@@ -4,7 +4,7 @@
 
 import random
 
-# Äratus 2.1
+#2.1
 def aratus():
     korrad = int(input("Mitu korda on vaja äratada: "))
     while korrad >= 1:
@@ -12,7 +12,7 @@ def aratus():
         korrad += -1
 aratus()
 
-# Murelikud Lapsevanemad 2.2
+#2.2
 def mure():
     ringid = int(input("Mitu ringi läbiti: "))
     porgandid = 0
@@ -23,7 +23,7 @@ def mure():
     print(f"porgandite koguarv on {porgandid}")
 mure()
 
-# Täringud 2.3
+#2.3
 def taringud():
     kogus = int(input("Mitut täringut lähed vaja: "))
     for q in range(kogus):
@@ -31,7 +31,7 @@ def taringud():
         print(vastus)
 taringud()
 
-# Male 2.4
+#2.4
 def male():
     taisarv = int(input("Mitmes ruut: "))
     i = 1
