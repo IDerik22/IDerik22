@@ -1,27 +1,34 @@
 from random import *
+import os
+def clear():
+    os.system("cls")
+arv = int(input("Mitme tehteni lahendame?\n"))
+clear()
 
-# arv1 = int(randint(1,100)
-# arv2 = int(randint(1,100)
-def tehe1():
-    õige = 0
-    n1 = randint(1, 100) #Annab 1-100 suvalise arvu
-    n2 = randint(1, 100) #Annab 1-100 suvalise arvu
-    tehtevalik = ["+","-"]
-    tehe = tehtevalik[randint(0,len(tehtevalik)-1)]
 
-    #print(tehe)
+def tehe1(arv, oige):
+    for i in range (arv):
+        n1 = randint(1, 100) #Annab 1-100 suvalise arvu
+        n2 = randint(1, 100) #Annab 1-100 suvalise arvu
+        tehtevalik = ["+","-"]
+        tehe = tehtevalik[randint(0,1)]
 
-    if tehe == "+":
-        kokku = n1 + n2
-    else:
-        kokku = n1 - n2
-    print(n1,tehe,n2,"=",kokku)
-    
-    kokku1 = input("Sisesta vastus: ")
-    
-    if kokku1 == kokku:
-        print("Õige vastus")
-    else:
-        print("Vale")
+        if tehe == "+":
+            kokku = n1 + n2
+            kokku = str(kokku);
+        elif tehe == "-":
+            kokku = n1 - n2
+            kokku = str(kokku);
+        print(n1,tehe,n2,"=",kokku)
+        
+        kokku1 = input("Sisesta vastus: ")
+        print("───────────")
+        if kokku == kokku1:
+            print("Õige vastus")
+            oige += 1
+        else:
+            print("Vale")
+        print("───────────")
+    print(f"Õiged {oige}/{arv}")
  
-tehe1()
+tehe1(arv, 0)
